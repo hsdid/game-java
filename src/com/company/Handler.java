@@ -6,21 +6,21 @@ import java.util.LinkedList;
 // loop each whole objects in game and render, update then to screen
 public class Handler {
 
-    LinkedList<GameObject> object = new LinkedList<GameObject>();
+     LinkedList<GameObject> object = new LinkedList<GameObject>();
 
     public void tick(){
         for (int i = 0; i < object.size(); i++){
-            // Get Object and updates
-            GameObject tempObject = object.get(i);
 
+            GameObject tempObject = object.get(i);
             tempObject.tick();
         }
     }
     public void render (Graphics g) {
+
         for (int i = 0; i < object.size(); i++){
+
             // Get Object and render
             GameObject tempObject = object.get(i);
-
             tempObject.render(g);
         }
 
@@ -32,7 +32,7 @@ public class Handler {
     }
 
     public void removeObject(GameObject object){
-        this.object.remove();
+        this.object.remove(object);
     }
 
 }

@@ -2,7 +2,7 @@ package com.company;
 
 import java.awt.*;
 
-//for example player, ennemys is Gameobject
+
 public abstract class GameObject {
 
     protected int x, y;
