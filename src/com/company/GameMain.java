@@ -5,24 +5,31 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 public class GameMain extends Canvas implements Runnable {
 
     public static final int WIDTH = 850, HEIGHT = 550;
     private boolean         running = false;
     private Handler         handler;
+    private Random          r;
+    private HUD hud;
 
     public GameMain() {
+
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
-
+        hud = new HUD();
 
         new Window(WIDTH,HEIGHT,"RECTANGLE FOOTBALL", this);
 
-        for (int i= 0; i < 50; i++)
+        r = new Random();
 
-        handler.addObject(new Playyer(100,100,ID.Player));
-        handler.addObject(new Playyer(100,100,ID.Player2));
+        for (int i = 0; i <= 10; i ++ )
+            handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy));
+
+        handler.addObject(new Playyer(WIDTH/2 - 32,HEIGHT/2 -32,ID.Player, handler));
+
 
         this.run();
     }
@@ -37,7 +44,7 @@ public class GameMain extends Canvas implements Runnable {
     // main loop
     public void run() {
 
-
+        this.requestFocus();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
@@ -73,6 +80,7 @@ public class GameMain extends Canvas implements Runnable {
     //updates
     private void tick() {
         handler.tick();
+        hud.tick();
     }
 
     private void render(){
@@ -90,6 +98,8 @@ public class GameMain extends Canvas implements Runnable {
 
 
         handler.render(g);
+
+        hud.render(g);
 
         g.dispose();
         bs.show();

@@ -5,9 +5,9 @@ import java.awt.*;
 
 public abstract class GameObject {
 
-    protected int x, y;
-    protected ID  id;
-    protected int speedX, speedY;
+    protected int     x, y;
+    protected ID      id;
+    protected int     speedX, speedY;
 
     public GameObject(int x, int y, ID id) {
         this.x  = x;
@@ -18,6 +18,7 @@ public abstract class GameObject {
 
     public abstract void tick();
     public abstract void render(Graphics g);
+    public abstract Rectangle getBounds();
 
     public void setSpeedX(int speedX) {
         this.speedX = speedX;
@@ -39,6 +40,7 @@ public abstract class GameObject {
         this.id = id;
     }
 
+
     public int getSpeedX() {
         return speedX;
     }
@@ -58,4 +60,6 @@ public abstract class GameObject {
     public ID getId() {
         return id;
     }
+
+
 }
