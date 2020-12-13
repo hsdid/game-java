@@ -5,5 +5,6 @@ public enum ID {
     Player2( ),
     Enemy(),
     BasicEnemy(),
+    Bullet()
 
 }

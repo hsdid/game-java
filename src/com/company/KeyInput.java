@@ -32,7 +32,7 @@ public class KeyInput extends KeyAdapter {
                 if (key == KeyEvent.VK_W) tempObject.setSpeedY(-5);
                 if (key == KeyEvent.VK_S) tempObject.setSpeedY(5);
 
-                
+                if (key == KeyEvent.VK_SPACE) tempObject.setShooting(true);
 
 
 
@@ -66,6 +66,8 @@ public class KeyInput extends KeyAdapter {
                 if (key == KeyEvent.VK_S) tempObject.setSpeedY(0);
                 if (key == KeyEvent.VK_A) tempObject.setSpeedX(0);
                 if (key == KeyEvent.VK_D) tempObject.setSpeedX(0);
+
+                if (key == KeyEvent.VK_SPACE) tempObject.setShooting(false);
 
 
             }

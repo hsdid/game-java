@@ -1,11 +1,13 @@
 package com.company;
 
 import java.awt.*;
+import java.util.LinkedList;
 
 public class Playyer extends GameObject {
 
     Handler handler;
     public int health = 100;
+    public int bullets;
 
     public Playyer(int x, int y, ID id, Handler handler) {
         super(x, y, id);
@@ -19,6 +21,7 @@ public class Playyer extends GameObject {
 
     public void tick() {
 
+
         x += speedX;
         y += speedY;
 
@@ -28,14 +31,12 @@ public class Playyer extends GameObject {
         if (x >= 800){
             x = 800;
         }
-        if (y >= 450) {
+        if (y >= 450){
             y = 450;
-
         }
 
         collision();
-
-
+        shoot();
 
     }
 
@@ -57,8 +58,24 @@ public class Playyer extends GameObject {
 
     private void shoot() {
 
-    }
 
+        for (int i = 0; i < handler.object.size(); i++){
+            GameObject tempObject = handler.object.get(i);
+
+            if (tempObject.getId() == ID.Bullet){
+                bullets++;
+            }
+        }
+
+        if (shooting) {
+
+            if (bullets <= 5) {
+                handler.addObject(new Bullet(x, y, ID.Bullet, handler));
+            }
+            else
+                bullets = 0;
+        }
+    }
 
 
     public void render(Graphics g) {
@@ -66,3 +83,4 @@ public class Playyer extends GameObject {
         g.fillRect(x,y,32,32);
     }
 }
+
