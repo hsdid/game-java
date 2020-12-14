@@ -21,7 +21,6 @@ public class StrongerEnemy extends GameObject{
             if (handler.object.get(i).getId() == ID.Player)
                 player = handler.object.get(i);
         }
-
     }
 
 
@@ -92,8 +91,6 @@ public class StrongerEnemy extends GameObject{
                         handler.removeObject(this);
                         HUD.score += 10;
                     }
-
-
                 }
             }
         }

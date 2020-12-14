@@ -5,21 +5,19 @@ import java.util.Random;
 
 public class LevelMenagment {
     private Handler handler;
-    private HUD hud;
-    private int score = 40;
-    private int basicEnemyLen = 0;
-    private int EnemyLen = 4;
-    private int StrongEnemyLen = 0;
-    private Random r = new Random();
+    private HUD     hud;
+    private int     score = 40;
+    private int     basicEnemyLen = 0;
+    private int     EnemyLen = 4;
+    private int     StrongEnemyLen = 0;
+    private Random  r = new Random();
 
     public LevelMenagment(Handler handler, HUD hud){
         this.handler = handler;
-        this.hud = hud;
+        this.hud     = hud;
     }
 
     public void tick () {
-
-
 
         if (HUD.score >= score ){
 
@@ -29,7 +27,7 @@ public class LevelMenagment {
 
             if (hud.getLevel() == 2) {
 
-                basicEnemyLen  += 0;
+                //basicEnemyLen  += 0;
                 EnemyLen       += 2;
                 StrongEnemyLen += 1;
                 score          += basicEnemyLen*10 + EnemyLen*10 + StrongEnemyLen*10;
@@ -38,7 +36,7 @@ public class LevelMenagment {
 
                 //Create Enemy
                 for (int i = 0; i < EnemyLen; i ++ ) {
-                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
+                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.Enemy, handler));
                 }
                 //Create StrongEnemy
                 for (int i = 0; i < StrongEnemyLen; i ++ ) {
@@ -49,6 +47,8 @@ public class LevelMenagment {
             }
             else if (hud.getLevel() == 3) {
 
+
+
                 basicEnemyLen  += 1;
                 EnemyLen       += 2;
                 score          += basicEnemyLen*10 + EnemyLen*10 + StrongEnemyLen*10;
@@ -57,11 +57,11 @@ public class LevelMenagment {
 
                 //Create basicEnemy
                 for (int i = 0; i < basicEnemyLen; i ++ ) {
-                    handler.addObject(new BasicEnemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
+                    handler.addObject(new BasicEnemy(20, r.nextInt(GameMain.HEIGHT-50), ID.BasicEnemy,handler));
                 }
                 //Create Enemy
                 for (int i = 0; i < EnemyLen; i ++ ) {
-                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
+                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.Enemy, handler));
                 }
                 //Create StrongEnemy
                 for (int i = 0; i < StrongEnemyLen; i ++ ) {
@@ -72,6 +72,8 @@ public class LevelMenagment {
             }
             else if (hud.getLevel() == 4) {
 
+
+
                 basicEnemyLen  += 1;
                 EnemyLen       += 2;
                 StrongEnemyLen += 1;
@@ -81,11 +83,11 @@ public class LevelMenagment {
 
                 //Create basicEnemy
                 for (int i = 0; i < basicEnemyLen; i ++ ) {
-                    handler.addObject(new BasicEnemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
+                    handler.addObject(new BasicEnemy(20, r.nextInt(GameMain.HEIGHT-50), ID.BasicEnemy,handler));
                 }
                 //Create Enemy
                 for (int i = 0; i < EnemyLen; i ++ ) {
-                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
+                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.Enemy, handler));
                 }
                 //Create StrongEnemy
                 for (int i = 0; i < StrongEnemyLen; i ++ ) {
@@ -104,11 +106,11 @@ public class LevelMenagment {
 
                 //Create basicEnemy
                 for (int i = 0; i < basicEnemyLen; i ++ ) {
-                    handler.addObject(new BasicEnemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
+                    handler.addObject(new BasicEnemy(20, r.nextInt(GameMain.HEIGHT-50), ID.BasicEnemy,handler));
                 }
                 //Create Enemy
                 for (int i = 0; i < EnemyLen; i ++ ) {
-                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
+                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.Enemy, handler));
                 }
                 //Create StrongEnemy
                 for (int i = 0; i < StrongEnemyLen; i ++ ) {

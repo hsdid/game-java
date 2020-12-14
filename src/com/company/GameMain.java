@@ -7,35 +7,39 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
-public class GameMain extends Canvas implements Runnable {
+public class GameMain extends Canvas  {
 
     public static final int WIDTH = 1050, HEIGHT = 550;
     private boolean         running = false;
     private Handler         handler;
     private Random          r;
-    private HUD hud;
-    private LevelMenagment levelMen;
+    private HUD             hud;
+    private LevelMenagment  levelMen;
+    private Menu            menu;
+
+    public enum STATE {
+        Menu,
+        Game
+    }
+
+    public STATE gameState = STATE.Menu;
 
     public GameMain() {
 
-        handler = new Handler();
+        handler  = new Handler();
+        menu     = new Menu(this,handler);
         this.addKeyListener(new KeyInput(handler));
-
+        this.addMouseListener(menu);
 
         new Window(WIDTH,HEIGHT,"", this);
 
-        hud = new HUD();
+        hud      = new HUD();
         levelMen = new LevelMenagment(handler, hud);
-        r = new Random();
-
-        handler.addObject(new Playyer(WIDTH/2 - 32,HEIGHT/2 -32,ID.Player, handler));
-
-
-        for (int i = 0; i < 4; i ++ )
-            handler.addObject(new Enemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
+        r        = new Random();
 
         this.run();
     }
+
 
     public void start(){
         running = true;
@@ -48,17 +52,18 @@ public class GameMain extends Canvas implements Runnable {
     public void run() {
 
         this.requestFocus();
-        long lastTime = System.nanoTime();
+        long lastTime        = System.nanoTime();
         double amountOfTicks = 60.0;
-        double ns = 1000000000 / amountOfTicks;
-        double delta = 0;
-        long timer = System.currentTimeMillis();
-        int frames = 0;
+        double ns            = 1000000000 / amountOfTicks;
+        double delta         = 0;
+        long timer           = System.currentTimeMillis();
+        int frames           = 0;
 
         while(running){
+
             long now = System.nanoTime();
 
-            delta += (now - lastTime) / ns;
+            delta   += (now - lastTime) / ns;
             lastTime = now;
 
             while (delta >= 1) {
@@ -80,11 +85,16 @@ public class GameMain extends Canvas implements Runnable {
         stop();
     }
 
-    //updates
+
     private void tick() {
         handler.tick();
-        hud.tick();
-        levelMen.tick();
+        if (gameState == STATE.Game) {
+            hud.tick();
+            levelMen.tick();
+        }
+        else if (gameState == STATE.Menu){
+            menu.tick();
+        }
     }
 
     private void render(){
@@ -100,10 +110,14 @@ public class GameMain extends Canvas implements Runnable {
         g.setColor(Color.black);
         g.fillRect(0,0, WIDTH, HEIGHT);
 
-
         handler.render(g);
 
-        hud.render(g);
+        if (gameState == STATE.Game) {
+            hud.render(g);
+        }
+        else if (gameState == STATE.Menu){
+            menu.render(g);
+        }
 
         g.dispose();
         bs.show();
