@@ -27,30 +27,34 @@ public class KeyInput extends KeyAdapter {
                 //key events fo player 1
 
 
-                if (key == KeyEvent.VK_A) tempObject.setSpeedX(-5);
-                if (key == KeyEvent.VK_D) tempObject.setSpeedX(5);
-                if (key == KeyEvent.VK_W) tempObject.setSpeedY(-5);
-                if (key == KeyEvent.VK_S) tempObject.setSpeedY(5);
+                if (key == KeyEvent.VK_A) {
+
+                    Playyer.direction = 1;
+                    tempObject.setSpeedX(-5);
+                }
+                if (key == KeyEvent.VK_D) {
+
+                    Playyer.direction = 2;
+                    tempObject.setSpeedX(5);
+                }
+                if (key == KeyEvent.VK_W) {
+
+                    Playyer.direction = 3;
+                    tempObject.setSpeedY(-5);
+                }
+                if (key == KeyEvent.VK_S) {
+
+                    Playyer.direction = 4;
+                    tempObject.setSpeedY(5);
+                }
 
                 if (key == KeyEvent.VK_SPACE) tempObject.setShooting(true);
 
 
 
             }
-
-            if (tempObject.getId() == ID.Player2){
-                //key events fo player 1
-
-                if (key == KeyEvent.VK_UP) tempObject.setSpeedY(-5);
-                if (key == KeyEvent.VK_LEFT) tempObject.setSpeedX(-5);
-                if (key == KeyEvent.VK_RIGHT) tempObject.setSpeedX(5);
-                if (key == KeyEvent.VK_DOWN) tempObject.setSpeedY(5);
-
-            }
         }
-
     }
-
     @Override
     public void keyReleased(KeyEvent e) {
         //super.keyReleased(e);
@@ -67,21 +71,11 @@ public class KeyInput extends KeyAdapter {
                 if (key == KeyEvent.VK_A) tempObject.setSpeedX(0);
                 if (key == KeyEvent.VK_D) tempObject.setSpeedX(0);
 
+
+
                 if (key == KeyEvent.VK_SPACE) tempObject.setShooting(false);
-
-
             }
 
-
-            if (tempObject.getId() == ID.Player2){
-                //key events fo player 1
-
-                if (key == KeyEvent.VK_UP) tempObject.setSpeedY(0);
-                if (key == KeyEvent.VK_LEFT) tempObject.setSpeedX(0);
-                if (key == KeyEvent.VK_RIGHT) tempObject.setSpeedX(0);
-                if (key == KeyEvent.VK_DOWN) tempObject.setSpeedY(0);
-
-            }
         }
 
 

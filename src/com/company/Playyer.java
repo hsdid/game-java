@@ -8,6 +8,9 @@ public class Playyer extends GameObject {
     Handler handler;
     public int health = 100;
     public int bullets;
+    public static int direction;
+
+
 
     public Playyer(int x, int y, ID id, Handler handler) {
         super(x, y, id);
@@ -28,11 +31,14 @@ public class Playyer extends GameObject {
         if (x <= 0){
             x = 0;
         }
-        if (x >= 800){
-            x = 800;
+        if (x >= GameMain.WIDTH - 52){
+            x = GameMain.WIDTH - 52;
         }
-        if (y >= 450){
-            y = 450;
+        if (y <= 0){
+            y = 0;
+        }
+        if (y >= GameMain.HEIGHT - 72){
+            y = GameMain.HEIGHT - 72;
         }
 
         collision();
@@ -45,7 +51,7 @@ public class Playyer extends GameObject {
             GameObject tempObject = handler.object.get(i);
 
             if (tempObject.getId() == ID.BasicEnemy){
-                //colision with ball
+                //colision with BasicEnmy
                 if (getBounds().intersects(tempObject.getBounds())){
                     if (HUD.HEALTH > 0)
                         HUD.HEALTH -= 2;
@@ -70,7 +76,8 @@ public class Playyer extends GameObject {
         if (shooting) {
 
             if (bullets <= 5) {
-                handler.addObject(new Bullet(x, y, ID.Bullet, handler));
+
+                handler.addObject(new Bullet(x, y, ID.Bullet, handler,direction));
             }
             else
                 bullets = 0;

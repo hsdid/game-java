@@ -17,7 +17,7 @@ public class BasicEnemy extends GameObject{
         x += speedX;
         y += speedY;
 
-        if (y <= 0 || y >= GameMain.HEIGHT - 32) speedY *= -1;
+        if (y <= 0 || y >= GameMain.HEIGHT - 52) speedY *= -1;
         if (x <= 0 || x >= GameMain.WIDTH - 32) speedX *= -1;
 
         collision();
@@ -37,6 +37,8 @@ public class BasicEnemy extends GameObject{
                 //colision with bullet
                 if (getBounds().intersects(tempObject.getBounds())){
                     handler.removeObject(this);
+
+                    HUD.score += 10;
                 }
             }
         }

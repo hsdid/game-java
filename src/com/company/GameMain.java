@@ -14,22 +14,25 @@ public class GameMain extends Canvas implements Runnable {
     private Handler         handler;
     private Random          r;
     private HUD hud;
+    private LevelMenagment levelMen;
 
     public GameMain() {
 
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
+
+
+        new Window(WIDTH,HEIGHT,"", this);
+
         hud = new HUD();
-
-        new Window(WIDTH,HEIGHT,"RECTANGLE FOOTBALL", this);
-
+        levelMen = new LevelMenagment(handler, hud);
         r = new Random();
-
-        for (int i = 0; i <= 5; i ++ )
-            handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy,handler));
 
         handler.addObject(new Playyer(WIDTH/2 - 32,HEIGHT/2 -32,ID.Player, handler));
 
+
+        for (int i = 0; i < 4; i ++ )
+            handler.addObject(new BasicEnemy(r.nextInt(GameMain.WIDTH-50), r.nextInt(GameMain.HEIGHT-50), ID.BasicEnemy,handler));
 
         this.run();
     }
@@ -81,6 +84,7 @@ public class GameMain extends Canvas implements Runnable {
     private void tick() {
         handler.tick();
         hud.tick();
+        levelMen.tick();
     }
 
     private void render(){
