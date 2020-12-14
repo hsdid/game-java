@@ -29,22 +29,26 @@ public class KeyInput extends KeyAdapter {
 
                 if (key == KeyEvent.VK_A) {
 
-                    Playyer.direction = 1;
+                    //Playyer.direction = 1;
+                    tempObject.direction = 1;
                     tempObject.setSpeedX(-5);
                 }
                 if (key == KeyEvent.VK_D) {
 
-                    Playyer.direction = 2;
+                    //Playyer.direction = 2;
+                    tempObject.direction = 2;
                     tempObject.setSpeedX(5);
                 }
                 if (key == KeyEvent.VK_W) {
 
-                    Playyer.direction = 3;
+                    //Playyer.direction = 3;
+                    tempObject.direction = 3;
                     tempObject.setSpeedY(-5);
                 }
                 if (key == KeyEvent.VK_S) {
 
-                    Playyer.direction = 4;
+                    //Playyer.direction = 4;
+                    tempObject.direction = 4;
                     tempObject.setSpeedY(5);
                 }
 

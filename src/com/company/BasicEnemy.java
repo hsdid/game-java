@@ -5,7 +5,7 @@ import java.awt.*;
 public class BasicEnemy extends GameObject{
 
     Handler handler;
-    public BasicEnemy(int x, int y, ID id, Handler handler) {
+    public BasicEnemy(float x, float y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
         speedX = 5;
@@ -26,7 +26,7 @@ public class BasicEnemy extends GameObject{
     @Override
     public void render(Graphics g) {
         g.setColor(Color.RED);
-        g.fillRect(x,y,20,20);
+        g.fillRect((int)x,(int)y,20,20);
 
     }
     private void collision() {
@@ -37,7 +37,7 @@ public class BasicEnemy extends GameObject{
                 //colision with bullet
                 if (getBounds().intersects(tempObject.getBounds())){
                     handler.removeObject(this);
-
+                    handler.removeObject(tempObject);
                     HUD.score += 10;
                 }
             }
@@ -46,6 +46,6 @@ public class BasicEnemy extends GameObject{
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y,20,20);
+        return new Rectangle((int)x,(int)y,20,20);
     }
 }

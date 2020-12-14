@@ -7,7 +7,9 @@ public class LevelMenagment {
     private Handler handler;
     private HUD hud;
     private int score = 40;
-    private int basicEnemyLen = 4;
+    private int basicEnemyLen = 0;
+    private int EnemyLen = 4;
+    private int StrongEnemyLen = 0;
     private Random r = new Random();
 
     public LevelMenagment(Handler handler, HUD hud){
@@ -26,40 +28,100 @@ public class LevelMenagment {
 
 
             if (hud.getLevel() == 2) {
-                score += basicEnemyLen*10 + 10;
+
+                basicEnemyLen  += 0;
+                EnemyLen       += 2;
+                StrongEnemyLen += 1;
+                score          += basicEnemyLen*10 + EnemyLen*10 + StrongEnemyLen*10;
+
                 System.out.println(score+ "=="+ HUD.score);
 
-                for (int i = 0; i < basicEnemyLen + 1; i ++ ) {
-                    handler.addObject(new BasicEnemy(r.nextInt(GameMain.WIDTH-50), r.nextInt(GameMain.HEIGHT-50), ID.BasicEnemy,handler));
+                //Create Enemy
+                for (int i = 0; i < EnemyLen; i ++ ) {
+                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
+                }
+                //Create StrongEnemy
+                for (int i = 0; i < StrongEnemyLen; i ++ ) {
+                    handler.addObject(new StrongerEnemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
                 }
 
-                basicEnemyLen += 1;
+
             }
             else if (hud.getLevel() == 3) {
-                score += basicEnemyLen*10 + 10;
+
+                basicEnemyLen  += 1;
+                EnemyLen       += 2;
+                score          += basicEnemyLen*10 + EnemyLen*10 + StrongEnemyLen*10;
+
                 System.out.println(score+ "=="+ HUD.score);
 
-                for (int i = 0; i < basicEnemyLen + 1; i ++ ) {
-                    handler.addObject(new BasicEnemy(r.nextInt(GameMain.WIDTH-50), r.nextInt(GameMain.HEIGHT-50), ID.BasicEnemy,handler));
+                //Create basicEnemy
+                for (int i = 0; i < basicEnemyLen; i ++ ) {
+                    handler.addObject(new BasicEnemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
+                }
+                //Create Enemy
+                for (int i = 0; i < EnemyLen; i ++ ) {
+                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
+                }
+                //Create StrongEnemy
+                for (int i = 0; i < StrongEnemyLen; i ++ ) {
+                    handler.addObject(new StrongerEnemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
                 }
 
-                basicEnemyLen += 1;
+
             }
             else if (hud.getLevel() == 4) {
-                score += basicEnemyLen*10 + 10;
+
+                basicEnemyLen  += 1;
+                EnemyLen       += 2;
+                StrongEnemyLen += 1;
+                score          += basicEnemyLen*10 + EnemyLen*10 + StrongEnemyLen*10;
 
                 System.out.println(score+ "=="+ HUD.score);
 
-                for (int i = 0; i < basicEnemyLen + 1; i ++ ) {
-                    handler.addObject(new BasicEnemy(r.nextInt(GameMain.WIDTH-50), r.nextInt(GameMain.HEIGHT-50), ID.BasicEnemy,handler));
+                //Create basicEnemy
+                for (int i = 0; i < basicEnemyLen; i ++ ) {
+                    handler.addObject(new BasicEnemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
+                }
+                //Create Enemy
+                for (int i = 0; i < EnemyLen; i ++ ) {
+                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
+                }
+                //Create StrongEnemy
+                for (int i = 0; i < StrongEnemyLen; i ++ ) {
+                    handler.addObject(new StrongerEnemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
                 }
 
-                basicEnemyLen += 1;
-                System.out.println(basicEnemyLen);
             }
             else if (hud.getLevel() == 5){
-                score += basicEnemyLen*10 + 30;
-                System.out.println("5 levl");
+
+                basicEnemyLen  += 1;
+                EnemyLen       += 2;
+                StrongEnemyLen += 1;
+                score          += basicEnemyLen*10 + EnemyLen*10 + StrongEnemyLen*10;
+
+                System.out.println(score+ "=="+ HUD.score);
+
+                //Create basicEnemy
+                for (int i = 0; i < basicEnemyLen; i ++ ) {
+                    handler.addObject(new BasicEnemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
+                }
+                //Create Enemy
+                for (int i = 0; i < EnemyLen; i ++ ) {
+                    handler.addObject(new Enemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
+                }
+                //Create StrongEnemy
+                for (int i = 0; i < StrongEnemyLen; i ++ ) {
+                    handler.addObject(new StrongerEnemy(20,  r.nextInt(GameMain.HEIGHT-50), ID.StrongerEnemy, handler));
+                }
+            }
+            else if (hud.getLevel() == 6) {
+                basicEnemyLen  += 1;
+                EnemyLen       += 2;
+                StrongEnemyLen += 1;
+                score          += basicEnemyLen*10 + EnemyLen*10 + StrongEnemyLen*10;
+
+                System.out.println("you winn the game");
             }
 
 

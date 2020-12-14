@@ -8,18 +8,23 @@ class Bullet extends GameObject{
     Handler handler;
     int width = 5;
     int hight = 20;
+    float toX;
+    float toY;
 
-    public Bullet(int x, int y, ID id, Handler handler,int direction) {
+    public Bullet(float x, float y, ID id, Handler handler,int direction) {
         super(x, y, id);
-        speedY = 10;
-        speedX = 10;
-        this.handler = handler;
-        this.direction = direction;
+        speedY          = 10;
+        speedX          = 10;
+        this.handler    = handler;
+        this.direction  = direction;
     }
+
+
 
     @Override
     public void tick() {
         //left
+
         if (direction == 1){
             x -= speedX;
         }
@@ -27,17 +32,18 @@ class Bullet extends GameObject{
         else if (direction == 2){
             x += speedX;
         }
+        //up
         else if (direction == 3){
             y -= speedY;
         }
+        //down
         else if (direction == 4){
             y += speedY;
         }
 
-        if (y < 0) {
-            handler.removeObject(this);
 
-        }
+
+
         if (y < 0 || y > GameMain.HEIGHT) handler.removeObject(this);
         if (x < 0 || x > GameMain.WIDTH) handler.removeObject(this);
     }
@@ -46,12 +52,17 @@ class Bullet extends GameObject{
     public void render(Graphics g) {
 
         g.setColor(Color.cyan);
-        g.fillRect(x,y,5,20);
+        if (direction == 1 || direction == 2)
+            g.fillRect((int)x,(int)y,20,5);
+        if (direction == 3 || direction == 4 )
+            g.fillRect((int)x,(int)y,5,20);
 
     }
 
+
+
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y, 5,20);
+        return new Rectangle((int)x,(int)y, 5,20);
     }
 }

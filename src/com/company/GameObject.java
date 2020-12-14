@@ -5,12 +5,14 @@ import java.awt.*;
 
 public abstract class GameObject {
 
-    protected int     x, y;
-    protected ID      id;
-    protected int     speedX, speedY;
-    protected boolean shooting = false;
+    protected float     x, y;
+    protected ID        id;
+    protected float     speedX, speedY;
+    protected boolean   shooting = false;
+    //values: 1-left, 2-right, 3-up, 4-down
+    protected int       direction;
 
-    public GameObject(int x, int y, ID id) {
+    public GameObject(float x, float y, ID id) {
         this.x  = x;
         this.y  = y;
         this.id = id;
@@ -45,23 +47,31 @@ public abstract class GameObject {
         this.id = id;
     }
 
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
     public boolean isShooting() {
         return shooting;
     }
 
-    public int getSpeedX() {
+    public int getDirection() {
+        return direction;
+    }
+
+    public float getSpeedX() {
         return speedX;
     }
 
-    public int getSpeedY() {
+    public float getSpeedY() {
         return speedY;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 

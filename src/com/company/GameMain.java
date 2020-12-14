@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class GameMain extends Canvas implements Runnable {
 
-    public static final int WIDTH = 850, HEIGHT = 550;
+    public static final int WIDTH = 1050, HEIGHT = 550;
     private boolean         running = false;
     private Handler         handler;
     private Random          r;
@@ -32,7 +32,7 @@ public class GameMain extends Canvas implements Runnable {
 
 
         for (int i = 0; i < 4; i ++ )
-            handler.addObject(new BasicEnemy(r.nextInt(GameMain.WIDTH-50), r.nextInt(GameMain.HEIGHT-50), ID.BasicEnemy,handler));
+            handler.addObject(new Enemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
 
         this.run();
     }

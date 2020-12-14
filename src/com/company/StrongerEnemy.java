@@ -1,18 +1,21 @@
 package com.company;
 
 import java.awt.*;
-import java.util.Random;
 
-public class Enemy extends GameObject{
+public class StrongerEnemy extends GameObject{
+
 
     private int health;
     Handler handler;
     private GameObject player;
-    public Enemy(float x, float y, ID id, Handler handler) {
+    private float distance;
+    int timer = 40;
+
+    public StrongerEnemy(float x, float y, ID id, Handler handler) {
         super(x, y, id);
 
         this.handler = handler;
-        this.health = 4;
+        this.health  = 10;
         //get player rom object list
         for (int i = 0; i < handler.object.size(); i++){
             if (handler.object.get(i).getId() == ID.Player)
@@ -29,7 +32,7 @@ public class Enemy extends GameObject{
 
         float diffX = x - player.getX() - 8;
         float diffY = y - player.getY() - 8;
-        float distance = (float) Math.sqrt( (x-player.getX()) * (x-player.getX()) + (y-player.getY()) * (y-player.getY()));
+        distance = (float) Math.sqrt( (x-player.getX()) * (x-player.getX()) + (y-player.getY()) * (y-player.getY()));
 
         speedX = (float) ((-1.0/distance) * diffX);
         speedY = (float) ((-1.0/distance) * diffY);
@@ -39,6 +42,36 @@ public class Enemy extends GameObject{
 
         collision();
 
+        shoot();
+
+
+    }
+
+    public void shoot() {
+
+
+        if (distance <= 130) {
+
+            timer ++;
+
+            speedX = 0;
+            speedY = 0;
+
+            if (timer >= 50){
+
+                float diffX = x - player.getX() - 8;
+                float diffY = y - player.getY() - 8;
+                float distance = (float) Math.sqrt( (x-player.getX()) * (x-player.getX()) + (y-player.getY()) * (y-player.getY()));
+
+                float toX = (float) ((-1.0/distance) * diffX);
+                float toY = (float) ((-1.0/distance) * diffY);
+
+
+                handler.addObject(new EnemyBullet(x, y, ID.EnemyBullet, handler,toX,toY));
+                timer = 0;
+            }
+
+        }
 
     }
 
@@ -68,12 +101,12 @@ public class Enemy extends GameObject{
 
 
     public void render(Graphics g) {
-        g.setColor(Color.PINK);
-        g.fillRect((int)x,(int)y,20, 20);
+        g.setColor(Color.red);
+        g.fillRect((int)x,(int)y,20, 32);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y,20,20);
+        return new Rectangle((int)x,(int)y,20,32);
     }
 }
