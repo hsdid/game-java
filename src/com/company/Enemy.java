@@ -8,6 +8,8 @@ public class Enemy extends GameObject{
     private int health;
     Handler handler;
     private GameObject player;
+    private int width=20, height=32;
+
     public Enemy(float x, float y, ID id, Handler handler) {
         super(x, y, id);
 
@@ -63,17 +65,22 @@ public class Enemy extends GameObject{
 
                 }
             }
+            if (tempObject.getId() == ID.Enemy) {
+
+            }
         }
     }
 
 
     public void render(Graphics g) {
-        g.setColor(Color.PINK);
-        g.fillRect((int)x,(int)y,20, 20);
+        //g.setColor(Color.PINK);
+        //g.fillRect((int)x,(int)y,20, 20);
+
+        g.drawImage(Assets.zombie, (int)x,(int)y,width,height,null);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y,20,20);
+        return new Rectangle((int)x,(int)y,width,height);
     }
 }

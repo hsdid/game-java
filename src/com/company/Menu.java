@@ -31,6 +31,9 @@ public class Menu extends MouseAdapter {
             game.gameState = GameMain.STATE.Game;
 
             handler.addObject(new Playyer(game.WIDTH/2 - 32,game.HEIGHT/2 -32,ID.Player, handler));
+
+
+
             for (int i = 0; i < 4; i ++ )
                     handler.addObject(new Enemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
 
@@ -59,6 +62,7 @@ public class Menu extends MouseAdapter {
 
         playBtn.render(g);
         quitBtn.render(g);
+        g.drawImage(Assets.zombie, 100,100,80,120,null);
 
     }
 }

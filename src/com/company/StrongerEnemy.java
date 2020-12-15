@@ -10,6 +10,7 @@ public class StrongerEnemy extends GameObject{
     private GameObject player;
     private float distance;
     int timer = 40;
+    int wight = 30, height=40;
 
     public StrongerEnemy(float x, float y, ID id, Handler handler) {
         super(x, y, id);
@@ -98,12 +99,13 @@ public class StrongerEnemy extends GameObject{
 
 
     public void render(Graphics g) {
-        g.setColor(Color.red);
-        g.fillRect((int)x,(int)y,20, 32);
+       // g.setColor(Color.red);
+        //g.fillRect((int)x,(int)y,20, 32);
+        g.drawImage(Assets.zombie2, (int)x,(int)y,wight,height,null);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y,20,32);
+        return new Rectangle((int)x,(int)y,wight,height);
     }
 }

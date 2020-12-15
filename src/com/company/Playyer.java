@@ -5,12 +5,9 @@ import java.util.LinkedList;
 
 public class Playyer extends GameObject {
 
-    Handler handler;
+    private Handler handler;
     public int health = 100;
-
     private int timer;
-
-
 
     public Playyer(float x, float y, ID id, Handler handler) {
         super(x, y, id);
@@ -55,9 +52,7 @@ public class Playyer extends GameObject {
                 if (getBounds().intersects(tempObject.getBounds())){
                     if (HUD.HEALTH > 0)
                         HUD.HEALTH -= 2;
-                    if (HUD.HEALTH == 0)
 
-                        System.out.println("game over");
                 }
             }
 
@@ -67,6 +62,18 @@ public class Playyer extends GameObject {
                     handler.removeObject(tempObject);
                     if (HUD.HEALTH > 0)
                         HUD.HEALTH -= 10;
+
+                }
+            }
+            if (tempObject.getId() == ID.Healkit){
+                //colision with bullet
+                if (getBounds().intersects(tempObject.getBounds())){
+                    handler.removeObject(tempObject);
+                    if (HUD.HEALTH < 100)
+                        HUD.HEALTH += 25;
+                    if (HUD.HEALTH > 100)
+                        HUD.HEALTH = 100;
+
                 }
             }
         }
@@ -92,8 +99,17 @@ public class Playyer extends GameObject {
 
 
     public void render(Graphics g) {
-        g.setColor(Color.white);
-        g.fillRect((int)x,(int)y,20,32);
+        //g.setColor(Color.white);
+        //g.fillRect((int)x,(int)y,20,32);
+
+        g.drawImage(Assets.player, (int)x,(int)y,20,32,null);
+
+        if (direction == 1 ) {
+            g.drawImage(Assets.player, (int)x,(int)y,20,32,null);
+        } else if (direction == 2) {
+            g.drawImage(Assets.playerRight, (int)x,(int)y,20,32,null);
+        }
+
     }
 }
 

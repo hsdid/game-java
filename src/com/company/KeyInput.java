@@ -12,9 +12,9 @@ public class KeyInput extends KeyAdapter {
         this.handler = handler;
     }
 
-    @Override
+
     public void keyPressed(KeyEvent e) {
-        //super.keyPressed(e);
+
 
         int key = e.getKeyCode();
 
@@ -29,37 +29,34 @@ public class KeyInput extends KeyAdapter {
 
                 if (key == KeyEvent.VK_A) {
 
-                    //Playyer.direction = 1;
                     tempObject.direction = 1;
                     tempObject.setSpeedX(-5);
                 }
                 if (key == KeyEvent.VK_D) {
 
-                    //Playyer.direction = 2;
+
                     tempObject.direction = 2;
                     tempObject.setSpeedX(5);
                 }
                 if (key == KeyEvent.VK_W) {
 
-                    //Playyer.direction = 3;
+
                     tempObject.direction = 3;
                     tempObject.setSpeedY(-5);
                 }
                 if (key == KeyEvent.VK_S) {
 
-                    //Playyer.direction = 4;
+
                     tempObject.direction = 4;
                     tempObject.setSpeedY(5);
                 }
 
                 if (key == KeyEvent.VK_SPACE) tempObject.setShooting(true);
 
-
-
             }
         }
     }
-    @Override
+
     public void keyReleased(KeyEvent e) {
         //super.keyReleased(e);
         int key = e.getKeyCode();

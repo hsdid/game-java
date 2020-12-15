@@ -9,13 +9,14 @@ import java.util.Random;
 
 public class GameMain extends Canvas  {
 
-    public static final int WIDTH = 1050, HEIGHT = 550;
+    public static final int WIDTH = 700, HEIGHT = 550;
     private boolean         running = false;
     private Handler         handler;
     private Random          r;
     private HUD             hud;
     private LevelMenagment  levelMen;
     private Menu            menu;
+    private int tilex = 40 , tiley = 40;
 
     public enum STATE {
         Menu,
@@ -33,7 +34,7 @@ public class GameMain extends Canvas  {
 
         new Window(WIDTH,HEIGHT,"", this);
 
-        hud      = new HUD();
+        hud      = new HUD(this,handler);
         levelMen = new LevelMenagment(handler, hud);
         r        = new Random();
 
@@ -58,6 +59,8 @@ public class GameMain extends Canvas  {
         double delta         = 0;
         long timer           = System.currentTimeMillis();
         int frames           = 0;
+
+        Assets.init();
 
         while(running){
 
@@ -87,13 +90,23 @@ public class GameMain extends Canvas  {
 
 
     private void tick() {
+
         handler.tick();
+
         if (gameState == STATE.Game) {
             hud.tick();
             levelMen.tick();
         }
         else if (gameState == STATE.Menu){
             menu.tick();
+        }
+    }
+
+    public void drawbackground(Graphics g) {
+        for (int i = 0; i <= 25; i ++ ){
+            for (int j = 0; j <= 12; j ++ ) {
+                g.drawImage(Assets.ground, i*tilex,j*tiley, tilex,tiley,null);
+            }
         }
     }
 
@@ -107,16 +120,21 @@ public class GameMain extends Canvas  {
 
         Graphics g = bs.getDrawGraphics();
 
-        g.setColor(Color.black);
-        g.fillRect(0,0, WIDTH, HEIGHT);
+        // render background
+        drawbackground(g);
 
         handler.render(g);
 
+
+
         if (gameState == STATE.Game) {
             hud.render(g);
+
         }
         else if (gameState == STATE.Menu){
+
             menu.render(g);
+
         }
 
         g.dispose();

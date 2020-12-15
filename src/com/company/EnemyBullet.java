@@ -7,8 +7,8 @@ public class EnemyBullet extends GameObject{
 
     int direction;
     Handler handler;
-    int width = 5;
-    int hight = 20;
+    int width = 15;
+    int hight = 15;
     float toX;
     float toY;
 
@@ -42,7 +42,7 @@ public class EnemyBullet extends GameObject{
     public void render(Graphics g) {
 
         g.setColor(Color.yellow);
-        g.fillRect((int)x,(int)y,15,15);
+        g.fillRect((int)x,(int)y,width,hight);
 
 
     }
@@ -51,6 +51,6 @@ public class EnemyBullet extends GameObject{
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y, 5,20);
+        return new Rectangle((int)x,(int)y, width,hight);
     }
 }

@@ -7,6 +7,7 @@ public enum ID {
     BasicEnemy(),
     Bullet(),
     StrongerEnemy(),
-    EnemyBullet()
+    EnemyBullet(),
+    Healkit()
 
 }

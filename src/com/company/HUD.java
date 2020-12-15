@@ -6,12 +6,28 @@ public class HUD {
 
     public static int HEALTH = 100;
     public static int score = 0;
-    private int level = 1;
 
+    private int level = 0;
+    private GameMain game;
+    private Handler handler;
+    private Playyer player;
+
+
+    public HUD (GameMain game, Handler handler){
+        this.game    = game;
+        this.handler = handler;
+
+    }
 
     public void tick() {
 
-
+        if (HEALTH <= 0 ){
+            game.gameState = GameMain.STATE.Menu;
+            score          = 0;
+            level          = 0;
+            HEALTH         = 100;
+            handler.object.clear();
+        }
 
     }
 
