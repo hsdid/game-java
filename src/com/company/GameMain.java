@@ -37,7 +37,7 @@ public class GameMain extends Canvas  {
         hud      = new HUD(this,handler);
         levelMen = new LevelMenagment(handler, hud);
         r        = new Random();
-
+        this.start();
         this.run();
     }
 
@@ -123,18 +123,14 @@ public class GameMain extends Canvas  {
         // render background
         drawbackground(g);
 
-        handler.render(g);
-
-
 
         if (gameState == STATE.Game) {
+            handler.render(g);
             hud.render(g);
-
         }
         else if (gameState == STATE.Menu){
 
             menu.render(g);
-
         }
 
         g.dispose();

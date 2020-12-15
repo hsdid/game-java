@@ -5,6 +5,7 @@ import java.awt.*;
 public class HUD {
 
     public static int HEALTH = 100;
+    public static int HEALTH2 = 100;
     public static int score = 0;
 
     private int level = 0;

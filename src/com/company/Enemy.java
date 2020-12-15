@@ -31,6 +31,7 @@ public class Enemy extends GameObject{
 
         float diffX = x - player.getX() - 8;
         float diffY = y - player.getY() - 8;
+
         float distance = (float) Math.sqrt( (x-player.getX()) * (x-player.getX()) + (y-player.getY()) * (y-player.getY()));
 
         speedX = (float) ((-1.0/distance) * diffX);
@@ -61,7 +62,6 @@ public class Enemy extends GameObject{
                         handler.removeObject(this);
                         HUD.score += 10;
                     }
-
 
                 }
             }

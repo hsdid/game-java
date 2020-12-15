@@ -26,27 +26,43 @@ public class KeyInput extends KeyAdapter {
             if (tempObject.getId() == ID.Player){
                 //key events fo player 1
 
-
                 if (key == KeyEvent.VK_A) {
-
                     tempObject.direction = 1;
                     tempObject.setSpeedX(-5);
                 }
                 if (key == KeyEvent.VK_D) {
-
-
                     tempObject.direction = 2;
                     tempObject.setSpeedX(5);
                 }
                 if (key == KeyEvent.VK_W) {
-
-
                     tempObject.direction = 3;
                     tempObject.setSpeedY(-5);
                 }
                 if (key == KeyEvent.VK_S) {
+                    tempObject.direction = 4;
+                    tempObject.setSpeedY(5);
+                }
+
+                if (key == KeyEvent.VK_G) tempObject.setShooting(true);
+
+            }
 
 
+            if (tempObject.getId() == ID.Player2){
+                //key events fo player 1
+                if (key == KeyEvent.VK_LEFT) {
+                    tempObject.direction = 1;
+                    tempObject.setSpeedX(-5);
+                }
+                if (key == KeyEvent.VK_RIGHT) {
+                    tempObject.direction = 2;
+                    tempObject.setSpeedX(5);
+                }
+                if (key == KeyEvent.VK_UP) {
+                    tempObject.direction = 3;
+                    tempObject.setSpeedY(-5);
+                }
+                if (key == KeyEvent.VK_DOWN) {
                     tempObject.direction = 4;
                     tempObject.setSpeedY(5);
                 }
@@ -71,6 +87,20 @@ public class KeyInput extends KeyAdapter {
                 if (key == KeyEvent.VK_S) tempObject.setSpeedY(0);
                 if (key == KeyEvent.VK_A) tempObject.setSpeedX(0);
                 if (key == KeyEvent.VK_D) tempObject.setSpeedX(0);
+
+
+
+                if (key == KeyEvent.VK_G) tempObject.setShooting(false);
+            }
+
+
+            if ( tempObject.getId() == ID.Player2){
+                //key events fo player 2
+
+                if (key == KeyEvent.VK_UP) tempObject.setSpeedY(0);
+                if (key == KeyEvent.VK_DOWN) tempObject.setSpeedY(0);
+                if (key == KeyEvent.VK_LEFT) tempObject.setSpeedX(0);
+                if (key == KeyEvent.VK_RIGHT) tempObject.setSpeedX(0);
 
 
 

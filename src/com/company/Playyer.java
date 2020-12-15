@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class Playyer extends GameObject {
 
     private Handler handler;
-    public int health = 100;
+   // public int health = 100;
     private int timer;
 
     public Playyer(float x, float y, ID id, Handler handler) {
@@ -66,7 +66,7 @@ public class Playyer extends GameObject {
                 }
             }
             if (tempObject.getId() == ID.Healkit){
-                //colision with bullet
+
                 if (getBounds().intersects(tempObject.getBounds())){
                     handler.removeObject(tempObject);
                     if (HUD.HEALTH < 100)

@@ -36,9 +36,10 @@ public class LevelMenagment {
                     //basicEnemyLen  += 0;
                     EnemyLen += 2;
                     StrongEnemyLen += 1;
+
                     score += basicEnemyLen * 10 + EnemyLen * 10 + StrongEnemyLen * 10;
 
-                    System.out.println(score + "==" + HUD.score);
+
 
                     //Create Enemy
                     for (int i = 0; i < EnemyLen; i++) {
@@ -48,6 +49,7 @@ public class LevelMenagment {
                     for (int i = 0; i < StrongEnemyLen; i++) {
                         handler.addObject(new StrongerEnemy(20, r.nextInt(GameMain.HEIGHT - 50), ID.StrongerEnemy, handler));
                     }
+                    //heal
                     handler.addObject(new Healkit( r.nextInt(GameMain.WIDTH - 50), r.nextInt(GameMain.HEIGHT - 50) ,ID.Healkit));
 
                 } else if (hud.getLevel() == 3) {
@@ -58,7 +60,7 @@ public class LevelMenagment {
                     score += basicEnemyLen * 10 + EnemyLen * 10 + StrongEnemyLen * 10;
 
 
-                    System.out.println(score + "==" + HUD.score);
+
 
                     //Create basicEnemy
                     for (int i = 0; i < basicEnemyLen; i++) {
@@ -73,6 +75,7 @@ public class LevelMenagment {
                         handler.addObject(new StrongerEnemy(20, r.nextInt(GameMain.HEIGHT - 50), ID.StrongerEnemy, handler));
                     }
 
+                    //Heal
                     handler.addObject(new Healkit( r.nextInt(GameMain.WIDTH - 50), r.nextInt(GameMain.HEIGHT - 50) ,ID.Healkit));
 
 
@@ -81,10 +84,10 @@ public class LevelMenagment {
 
                     //basicEnemyLen += 1;
                     EnemyLen += 3;
-                    StrongEnemyLen += 1;
+                    StrongEnemyLen += 3;
                     score += basicEnemyLen * 10 + EnemyLen * 10 + StrongEnemyLen * 10;
 
-                    System.out.println(score + "==" + HUD.score);
+
 
                     //Create basicEnemy
                     for (int i = 0; i < basicEnemyLen; i++) {
@@ -106,7 +109,7 @@ public class LevelMenagment {
                     StrongEnemyLen += 1;
                     score += basicEnemyLen * 10 + EnemyLen * 10 + StrongEnemyLen * 10;
 
-                    System.out.println(score + "==" + HUD.score);
+
 
                     //Create basicEnemy
                     for (int i = 0; i < basicEnemyLen; i++) {
@@ -126,7 +129,7 @@ public class LevelMenagment {
                     StrongEnemyLen += 1;
                     score += basicEnemyLen * 10 + EnemyLen * 10 + StrongEnemyLen * 10;
 
-                    System.out.println("you winn the game");
+                    //System.out.println("you winn the game");
                 }
 
 

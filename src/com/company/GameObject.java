@@ -12,6 +12,7 @@ public abstract class GameObject {
     //values: 1-left, 2-right, 3-up, 4-down
     protected int       direction;
 
+
     public GameObject(float x, float y, ID id) {
         this.x  = x;
         this.y  = y;
