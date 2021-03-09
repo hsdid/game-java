@@ -5,8 +5,8 @@ import java.awt.*;
 public class Healkit extends GameObject{
 
 
-    public Healkit(float x, float y, ID id) {
-        super(x, y, id);
+    public Healkit(float x, float y, int width, int height, ID id) {
+        super(x, y,width,height, id);
     }
 
     @Override
@@ -21,12 +21,12 @@ public class Healkit extends GameObject{
         g.drawString("+",(int)x+10,(int)y +10);
 
         g.setColor(Color.GREEN);
-        g.fillRect((int)x,(int)y,20, 20);
+        g.fillRect((int)x,(int)y,width, height);
 
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y,20,20);
+        return new Rectangle((int)x,(int)y,width,height);
     }
 }

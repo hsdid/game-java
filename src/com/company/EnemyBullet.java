@@ -7,15 +7,12 @@ public class EnemyBullet extends GameObject{
 
 
     private Handler handler;
-    private int width = 15;
-    private int hight = 15;
-    //private float toX;
-    //private float toY;
 
 
 
-    public EnemyBullet(float x, float y, ID id, Handler handler,float toX, float toY){
-        super(x,y,id);
+
+    public EnemyBullet(float x, float y, int width, int height, ID id, Handler handler,float toX, float toY){
+        super(x,y, width, height, id);
         this.handler    = handler;
         speedX          = toX;
         speedY          = toY;
@@ -29,8 +26,6 @@ public class EnemyBullet extends GameObject{
         x += speedX;
         y += speedY;
 
-
-
         if (y < 0 || y > GameMain.HEIGHT) handler.removeObject(this);
         if (x < 0 || x > GameMain.WIDTH) handler.removeObject(this);
     }
@@ -39,7 +34,7 @@ public class EnemyBullet extends GameObject{
     public void render(Graphics g) {
 
         g.setColor(Color.yellow);
-        g.fillRect((int)x,(int)y,width,hight);
+        g.fillRect((int)x,(int)y,width,height);
 
 
     }
@@ -48,6 +43,6 @@ public class EnemyBullet extends GameObject{
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y, width,hight);
+        return new Rectangle((int)x,(int)y, width,height);
     }
 }

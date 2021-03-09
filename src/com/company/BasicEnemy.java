@@ -5,8 +5,8 @@ import java.awt.*;
 public class BasicEnemy extends GameObject{
 
     Handler handler;
-    public BasicEnemy(float x, float y, ID id, Handler handler) {
-        super(x, y, id);
+    public BasicEnemy(float x, float y, int width, int height, ID id, Handler handler) {
+        super(x, y, width, height,  id);
         this.handler = handler;
         speedX = 5;
         speedY = 5;
@@ -46,6 +46,6 @@ public class BasicEnemy extends GameObject{
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y,20,20);
+        return new Rectangle((int)x,(int)y,width,height);
     }
 }

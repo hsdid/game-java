@@ -6,12 +6,9 @@ class Bullet extends GameObject{
 
     int direction;
     Handler handler;
-    int width = 5;
-    int hight = 20;
 
-
-    public Bullet(float x, float y, ID id, Handler handler,int direction) {
-        super(x, y, id);
+    public Bullet(float x, float y,int width, int height, ID id, Handler handler,int direction) {
+        super(x, y,width,height, id);
         speedY          = 10;
         speedX          = 10;
         this.handler    = handler;
@@ -52,9 +49,9 @@ class Bullet extends GameObject{
 
         g.setColor(Color.cyan);
         if (direction == 1 || direction == 2)
-            g.fillRect((int)x,(int)y,hight,width);
+            g.fillRect((int)x,(int)y,height,width);
         if (direction == 3 || direction == 4 )
-            g.fillRect((int)x,(int)y,width,hight);
+            g.fillRect((int)x,(int)y,width,height);
 
     }
 
@@ -62,6 +59,6 @@ class Bullet extends GameObject{
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y, width,hight);
+        return new Rectangle((int)x,(int)y, width,height);
     }
 }

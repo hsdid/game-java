@@ -33,21 +33,21 @@ public class Menu extends MouseAdapter {
 
             game.gameState = GameMain.STATE.Game;
 
-            handler.addObject(new Playyer(game.WIDTH/2 - 32,game.HEIGHT/2 -32,ID.Player, handler));
+            handler.addObject(new Playyer(game.WIDTH/2 - 32,game.HEIGHT/2 -32,20,32,ID.Player, handler));
 
             for (int i = 0; i < 4; i ++ )
-                    handler.addObject(new Enemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
+                    handler.addObject(new Enemy(20, r.nextInt(GameMain.HEIGHT-50),20,32, ID.Enemy,handler));
 
         }
         else if (twoPlayers.mouseOver(mx,my)) {
 
             game.gameState = GameMain.STATE.Game;
 
-            handler.addObject(new Playyer(game.WIDTH/2 - 32,game.HEIGHT/2 -32,ID.Player, handler));
-            handler.addObject(new Playyer(game.WIDTH/2 - 32,game.HEIGHT/2 -32,ID.Player2, handler));
+            handler.addObject(new Playyer(game.WIDTH/2 - 32,game.HEIGHT/2 -32, 20,32, ID.Player, handler));
+            handler.addObject(new Playyer(game.WIDTH/2 - 32,game.HEIGHT/2 -32, 20,32, ID.Player2, handler));
 
             for (int i = 0; i < 4; i ++ )
-                handler.addObject(new Enemy(20, r.nextInt(GameMain.HEIGHT-50), ID.Enemy,handler));
+                handler.addObject(new Enemy(20, r.nextInt(GameMain.HEIGHT-50),20,32, ID.Enemy,handler));
 
         }
         else if (quitBtn.mouseOver(mx,my)) {

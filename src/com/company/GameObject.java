@@ -6,17 +6,22 @@ import java.awt.*;
 public abstract class GameObject {
 
     protected float     x, y;
+    protected int       width, height;
     protected ID        id;
     protected float     speedX, speedY;
     protected boolean   shooting = false;
+    protected boolean   build    = false;
     //values: 1-left, 2-right, 3-up, 4-down
     protected int       direction;
 
 
-    public GameObject(float x, float y, ID id) {
-        this.x  = x;
-        this.y  = y;
-        this.id = id;
+    public GameObject(float x, float y, int width, int height, ID id) {
+        this.x      = x;
+        this.y      = y;
+        this.width  = width;
+        this.height = height;
+        this.id     = id;
+
 
     }
 
@@ -35,6 +40,8 @@ public abstract class GameObject {
     public void setSpeedY(int speedY) {
         this.speedY = speedY;
     }
+
+    public void setBuild(boolean build) {this.build = build;}
 
     public void setY(int y) {
         this.y = y;

@@ -10,10 +10,10 @@ public class Enemy extends GameObject{
     private GameObject player;
     private GameObject player2;
 
-    private int width=20, height=32;
+    //private int width=20, height=32;
 
-    public Enemy(float x, float y, ID id, Handler handler) {
-        super(x, y, id);
+    public Enemy(float x, float y, int width, int height, ID id, Handler handler) {
+        super(x, y,width,height, id);
 
         this.handler = handler;
         this.health  = 4;
@@ -103,9 +103,9 @@ public class Enemy extends GameObject{
                         handler.removeObject(this);
                         HUD.score += 10;
                     }
-
                 }
             }
+
             if (tempObject.getId() == ID.Enemy) {
 
             }

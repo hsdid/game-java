@@ -9,14 +9,14 @@ public class Playyer extends GameObject {
    // public int health = 100;
     private int timer;
 
-    public Playyer(float x, float y, ID id, Handler handler) {
-        super(x, y, id);
+    public Playyer(float x, float y,int width, int height, ID id, Handler handler) {
+        super(x, y,width,height, id);
         this.handler = handler;
 
     }
 
     public Rectangle getBounds(){
-        return new Rectangle((int)x,(int)y,32,32);
+        return new Rectangle((int)x,(int)y,width,height);
     }
 
     public void tick() {
@@ -40,6 +40,7 @@ public class Playyer extends GameObject {
 
         collision();
         shoot();
+        build();
 
     }
 
@@ -81,33 +82,31 @@ public class Playyer extends GameObject {
 
     private void shoot() {
 
-
-
-
         if (shooting) {
             timer ++;
             if (timer >= 10){
-                handler.addObject(new Bullet(x, y, ID.Bullet, handler, direction));
+                handler.addObject(new Bullet(x, y,5,20, ID.Bullet, handler, direction));
                 timer = 0;
             }
+        }
+    }
 
+    private void build() {
 
-
-
+        if (build) {
+            handler.addObject(new Block(x,y,20,32 ,ID.Block, handler));
         }
     }
 
 
     public void render(Graphics g) {
-        //g.setColor(Color.white);
-        //g.fillRect((int)x,(int)y,20,32);
 
-        g.drawImage(Assets.player, (int)x,(int)y,20,32,null);
+        g.drawImage(Assets.player, (int)x,(int)y,width,height,null);
 
         if (direction == 1 ) {
-            g.drawImage(Assets.player, (int)x,(int)y,20,32,null);
+            g.drawImage(Assets.player, (int)x,(int)y,width,height,null);
         } else if (direction == 2) {
-            g.drawImage(Assets.playerRight, (int)x,(int)y,20,32,null);
+            g.drawImage(Assets.playerRight, (int)x,(int)y,width,height,null);
         }
 
     }

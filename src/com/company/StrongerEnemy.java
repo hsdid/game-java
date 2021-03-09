@@ -13,11 +13,10 @@ public class StrongerEnemy extends GameObject{
     private float       distance2;
 
     int                 timer = 40;
-    int                 wight = 30,height=40;
 
 
-    public StrongerEnemy(float x, float y, ID id, Handler handler) {
-        super(x, y, id);
+    public StrongerEnemy(float x, float y,int width, int height, ID id, Handler handler) {
+        super(x, y,width,height,  id);
 
         this.handler = handler;
         this.health  = 10;
@@ -68,7 +67,7 @@ public class StrongerEnemy extends GameObject{
                     float toX = (float) ((-1.0/distance) * diffX);
                     float toY = (float) ((-1.0/distance) * diffY);
 
-                    handler.addObject(new EnemyBullet(x, y, ID.EnemyBullet, handler,toX,toY));
+                    handler.addObject(new EnemyBullet(x, y,15,15, ID.EnemyBullet, handler,toX,toY));
                     timer = 0;
                 }
             }
@@ -94,7 +93,7 @@ public class StrongerEnemy extends GameObject{
                             float toX = (float) ((-1.0/distance) * diffX);
                             float toY = (float) ((-1.0/distance) * diffY);
 
-                            handler.addObject(new EnemyBullet(x, y, ID.EnemyBullet, handler,toX,toY));
+                            handler.addObject(new EnemyBullet(x, y,15,15, ID.EnemyBullet, handler,toX,toY));
                             timer = 0;
 
                         }
@@ -113,7 +112,7 @@ public class StrongerEnemy extends GameObject{
                             float toX = (float) ((-1.0 / distance2) * diffX);
                             float toY = (float) ((-1.0 / distance2) * diffY);
 
-                            handler.addObject(new EnemyBullet(x, y, ID.EnemyBullet, handler, toX, toY));
+                            handler.addObject(new EnemyBullet(x, y,15,15, ID.EnemyBullet, handler, toX, toY));
                             timer = 0;
                         }
                     }
@@ -196,13 +195,12 @@ public class StrongerEnemy extends GameObject{
 
 
     public void render(Graphics g) {
-       // g.setColor(Color.red);
-        //g.fillRect((int)x,(int)y,20, 32);
-        g.drawImage(Assets.zombie2, (int)x,(int)y,wight,height,null);
+
+        g.drawImage(Assets.zombie2, (int)x,(int)y,width,height,null);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y,wight,height);
+        return new Rectangle((int)x,(int)y,width,height);
     }
 }

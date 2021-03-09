@@ -44,6 +44,7 @@ public class KeyInput extends KeyAdapter {
                 }
 
                 if (key == KeyEvent.VK_G) tempObject.setShooting(true);
+                if (key == KeyEvent.VK_H) tempObject.setBuild(true);
 
             }
 
@@ -91,6 +92,7 @@ public class KeyInput extends KeyAdapter {
 
 
                 if (key == KeyEvent.VK_G) tempObject.setShooting(false);
+                if (key == KeyEvent.VK_H) tempObject.setBuild(false);
             }
 
 
