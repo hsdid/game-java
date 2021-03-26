@@ -9,3 +9,11 @@
 - super zombie(red) can shoot to player and have more stamina
 
 - Game have 2 players option
+
+![](img/img0.png)
+![](img/img1.png)
+![](img/img2.png)
+![](img/img3.png)
+![](img/img4.png)
+![](img/img5.png)
+![](img/img6.png)
